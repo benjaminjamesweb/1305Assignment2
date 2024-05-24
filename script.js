@@ -111,9 +111,10 @@ function loadTableData(products) {
     tableBody.innerHTML = "";
 
     products.forEach(product => {
+        let formattedPrice = `$${product.price.toFixed(2)}`;
         let row = `<tr>
                     <td>${product.name}</td>
-                    <td>${product.price}</td>
+                    <td>${formattedPrice}</td>
                     <td>${product.description}</td>
                 </tr>`;
         tableBody.innerHTML += row;

@@ -2,17 +2,16 @@ let isForward = true;
 let timeout;
 let isAnimating = false;
 
+// Note to Prabh: I had a lot of help from ChatGPT for the following function (to toggle the background colour)
 document.addEventListener('mousemove', () => {
-    if (isAnimating) return; // Ignore mouse moves during the animation
+    if (isAnimating) return; 
 
-    // Clear the previous timeout if the mouse is still moving
     clearTimeout(timeout);
 
-    // Set a new timeout to trigger the animation after mouse stops moving for 150ms
     timeout = setTimeout(() => {
-        if (isAnimating) return; // Ignore if already animating
+        if (isAnimating) return; 
 
-        isAnimating = true; // Set flag to indicate animation is in progress
+        isAnimating = true; 
 
         if (isForward) {
             document.body.classList.add('animate-gradient-forward');
@@ -22,7 +21,6 @@ document.addEventListener('mousemove', () => {
             document.body.classList.remove('animate-gradient-forward');
         }
 
-        // Set the final background state after the animation completes
         setTimeout(() => {
             if (isForward) {
                 document.body.style.backgroundPosition = '100% 100%';
@@ -30,17 +28,14 @@ document.addEventListener('mousemove', () => {
                 document.body.style.backgroundPosition = '0% 0%';
             }
 
-            // Toggle the direction for the next mouse move
             isForward = !isForward;
 
-            // Remove the animation classes
             document.body.classList.remove('animate-gradient-forward');
             document.body.classList.remove('animate-gradient-reverse');
 
-            // Reset the animation flag
             isAnimating = false;
-        }, 1500); // Match this duration to your animation duration (1.5 seconds in this case)
-    }, 150); // Adjust the delay as needed
+        }, 1500); 
+    }, 150); 
 });
 
 
